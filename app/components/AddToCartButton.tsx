@@ -1,10 +1,28 @@
+"use client";
+
+import { useCart } from "../context/CartContext";
+
 export interface AddToCartButtonProps {
   name: string;
+  product: {
+    id: number;
+    name: string;
+    image: string;
+    price: number;
+  };
 }
 
-export default function AddToCartButton(props: AddToCartButtonProps) {
+export default function AddToCartButton({
+  name,
+  product,
+}: AddToCartButtonProps) {
+  const { addToCart } = useCart();
   return (
     <button
+      onClick={() => {
+        addToCart(product);
+        alert("Товар додано!");
+      }}
       className="    
     p-2
     mt-3   
@@ -19,7 +37,7 @@ export default function AddToCartButton(props: AddToCartButtonProps) {
     ml-10
     "
     >
-      {props.name}
+      {name}
     </button>
   );
 }

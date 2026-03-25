@@ -1,11 +1,12 @@
 import ShoppingCartForm from "./ShoppingCartForm";
-import QuantityCounter from "./coutner";
-
+import ShoppingCartOrder from "./ShoppingCartOrder";
 export default function ShoppingCart() {
   return (
     <>
-      <ShoppingCartForm />
-      <QuantityCounter />
+      <div className="flex flex-row flex-2 w-full">
+        <ShoppingCartForm />
+        <ShoppingCartOrder />
+      </div>
     </>
   );
 }

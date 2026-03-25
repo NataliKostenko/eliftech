@@ -15,7 +15,7 @@ export default function NavigationBar() {
         <p>|</p>
         <li className="ml-5 ">
           <Link
-            href="/shoppingCart"
+            href="/cart"
             className="text-cyan-700  hover:underline decoration-cyan-500 active:underline decoration-cyan-700"
           >
             Shopping cart

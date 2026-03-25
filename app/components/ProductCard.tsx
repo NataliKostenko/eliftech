@@ -19,7 +19,15 @@ export default function ProductCard(props: ProductCardProps) {
         />
       </div>
       <p className="mt-2">{props.name}</p>
-      <AddToCartButton name={"add to Cart"} />
+      <AddToCartButton
+        name="add to Cart"
+        product={{
+          id: props.id,
+          name: props.name,
+          image: props.image,
+          price: 100,
+        }}
+      />
     </div>
   );
 }
