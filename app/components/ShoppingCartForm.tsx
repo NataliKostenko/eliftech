@@ -22,8 +22,8 @@ export default function ShoppingCartForm() {
   }
 
   return (
-    <div className="max-w-md mx-auto mt-10 p-6 bg-white dark:bg-zinc-900 rounded-xl shadow-md border border-gray-200 dark:border-zinc-800">
-      <form action={handleSubmit} className="flex flex-col gap-4">
+    <div className="w-1/2 flex flex-row flex-wrap justify-center  border rounded-md p-3 ml-5">
+      <form action={handleSubmit} className="flex flex-col gap-6 w-96 mt-5">
         <div>
           <label
             htmlFor="name"
