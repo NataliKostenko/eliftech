@@ -16,6 +16,7 @@ export default function ProductsCardsList(props: ProductsCardsListProps) {
           key={element.id}
           image={element.image}
           id={element.id}
+          price={element.price}
         />
       )) || <p>Shop is not selected</p>}
     </div>
