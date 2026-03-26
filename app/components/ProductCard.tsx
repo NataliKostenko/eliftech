@@ -5,6 +5,7 @@ export interface ProductCardProps {
   id: number;
   name: string;
   image: string;
+  price: number;
 }
 
 export default function ProductCard(props: ProductCardProps) {
@@ -16,16 +17,19 @@ export default function ProductCard(props: ProductCardProps) {
           alt={props.name}
           fill
           className="object-contain"
+          unoptimized
+          sizes="(max-width: 768px) 100vw, 250px"
         />
       </div>
       <p className="mt-2">{props.name}</p>
+      <p className="text-gray-700 font-bold mt-1">{props.price} грн</p>
       <AddToCartButton
         name="add to Cart"
         product={{
           id: props.id,
           name: props.name,
           image: props.image,
-          price: 100,
+          price: props.price,
         }}
       />
     </div>

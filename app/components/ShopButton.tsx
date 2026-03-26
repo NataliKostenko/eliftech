@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 export interface ShopButtonProps {
   id: number;
   name: string;
@@ -14,7 +12,6 @@ export default function ShopButton({
 }: ShopButtonProps) {
   return (
     <button
-      // href={`shop/${props.id}`}
       onClick={onClick}
       className={`
     inline-block 

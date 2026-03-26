@@ -27,6 +27,8 @@ export default function OrderCard(props: OrderCardProps) {
           alt={props.name}
           fill
           className="object-contain"
+          unoptimized
+          sizes="(max-width: 768px) 100vw, 250px"
         />
       </div>
       <div className="flex flex-col w-2/5 ">

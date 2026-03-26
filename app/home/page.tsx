@@ -1,26 +1,49 @@
 "use client";
 import ShopsList from "../components/ShopsList";
 import ProductsCardsList from "../components/ProductsCardsList";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
+interface Product {
+  id: number;
+  shop_id: number;
+  name: string;
+  image: string;
+  price: number;
+}
+
+interface Shop {
+  id: number;
+  name: string;
+}
 
 export default function Home() {
+  const [shops, setShops] = useState<Shop[]>([]);
+  const [cards, setCards] = useState<Product[]>([]);
   const [selectedShopId, setSelectedShopId] = useState<number | null>(null);
-  const shops = [
-    { id: 1, name: "shop1" },
-    { id: 2, name: "shop2" },
-    { id: 3, name: "shop3" },
-  ];
+  const [isLoading, setIsLoading] = useState(true);
 
-  const cards = [
-    { id: 1, shopId: 1, name: "Burger1", image: "/burger1.jpg" },
-    { id: 2, shopId: 1, name: "Burger2", image: "/burger2.jpg" },
-    { id: 3, shopId: 2, name: "Burger3", image: "/burger3.jpg" },
-    { id: 4, shopId: 2, name: "Burger4", image: "/burger4.jpg" },
-    { id: 5, shopId: 3, name: "Burger5", image: "/burger5.jpg" },
-    { id: 6, shopId: 3, name: "Burger6", image: "/burger6.jpg" },
-  ];
+  useEffect(() => {
+    Promise.all([
+      fetch("/api/shops").then((res) => res.json()),
+      fetch("/api/products").then((res) => res.json()),
+    ])
+      .then(([shopsData, productsData]) => {
+        setShops(shopsData);
+        setCards(productsData);
+        if (shopsData.length > 0) setSelectedShopId(shopsData[0].id);
+      })
+      .catch((err) => console.error("Помилка завантаження:", err))
+      .finally(() => setIsLoading(false));
+  }, []);
 
-  const filteredCards = cards.filter((card) => card.shopId === selectedShopId);
+  const filteredCards = selectedShopId
+    ? cards.filter((card) => card.shop_id === selectedShopId)
+    : [];
+
+  if (isLoading) {
+    return <div className="p-10 text-center">Завантаження меню...</div>;
+  }
+
   return (
     <>
       <div className="flex flex-row flex-2 w-full">
