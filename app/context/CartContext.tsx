@@ -45,6 +45,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
       return [...prevCart, { ...product, quantity: 1 }];
     });
   };
+
   const updateQuantity = (id: number, delta: number) => {
     setCart((prevCart) =>
       prevCart.map((item) => {
@@ -57,6 +58,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
       }),
     );
   };
+
   const removeFromCart = (id: number) => {
     setCart((prevCart) => prevCart.filter((item) => item.id !== id));
   };
