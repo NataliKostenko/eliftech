@@ -29,7 +29,10 @@ export default function ShoppingCartOrder() {
         <p className="text-xl font-bold">
           Total: <span className="text-cyan-700">{totalPrice} грн</span>
         </p>
-        <button className="p-2 bg-cyan-600 text-white rounded-md w-40">
+        <button
+          type="submit"
+          className="p-2 bg-cyan-600 text-white rounded-md w-40"
+        >
           Submit Order
         </button>
       </div>

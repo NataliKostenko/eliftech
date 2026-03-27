@@ -23,6 +23,7 @@ export default function QuantityCounter({
       </span>
       <div className="flex flex-col">
         <button
+          type="button"
           onClick={() => onIncrease(id)}
           className="px-2 hover:bg-gray-100 border-l border-b"
         >
@@ -34,6 +35,7 @@ export default function QuantityCounter({
           </svg>
         </button>
         <button
+          type="button"
           onClick={() => onDecrease(id)}
           className="px-2 hover:bg-gray-100 border-l border-t"
         >
