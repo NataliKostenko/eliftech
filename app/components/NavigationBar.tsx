@@ -6,7 +6,7 @@ export default function NavigationBar() {
       <ul className="flex flex-row">
         <li className="mr-5 ">
           <Link
-            href="/home"
+            href="/"
             className="text-cyan-700  hover:underline decoration-cyan-500 active:underline decoration-cyan-700"
           >
             Shops
