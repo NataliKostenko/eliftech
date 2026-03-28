@@ -8,6 +8,7 @@ export async function POST(req: Request) {
       !body.customer.name ||
       !body.customer.phone ||
       !body.customer.address ||
+      !body.customer.email ||
       body.items.length === 0
     ) {
       return NextResponse.json({ error: "Неповні дані" }, { status: 400 });

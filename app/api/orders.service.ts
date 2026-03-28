@@ -47,7 +47,7 @@ export async function createOrder(orderData: OrderData) {
     const prices = items.map((i) => i.price);
     const quantities = items.map((i) => i.quantity);
 
-    client.query(itemsQuery, [orderId, productIds, prices, quantities]);
+    await client.query(itemsQuery, [orderId, productIds, prices, quantities]);
 
     await client.query("COMMIT");
     return { success: true, orderId };
