@@ -1,6 +1,6 @@
 "use client";
-import ShopsList from "../components/ShopsList";
-import ProductsCardsList from "../components/ProductsCardsList";
+import ShopsList from "./components/ShopsList";
+import ProductsCardsList from "./components/ProductsCardsList";
 import { useState, useEffect } from "react";
 
 interface Product {
