@@ -52,7 +52,6 @@ export default function Home() {
         <ShopsList
           shops={shops}
           onSelectShop={(id: number) => {
-            console.log(id);
             setSelectedShopId(id);
             return;
           }}
