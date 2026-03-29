@@ -21,7 +21,7 @@ export default function AddToCartButton({
     <button
       onClick={() => {
         addToCart(product);
-        alert("Товар додано!");
+        alert("Item added!");
       }}
       className="    
     p-2
