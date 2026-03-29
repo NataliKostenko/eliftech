@@ -1,7 +1,5 @@
 "use client";
 
-import { useState } from "react";
-
 export default function ShoppingCartForm() {
   return (
     <div className="w-1/2 flex flex-row flex-wrap justify-center  border rounded-md p-3 ml-5">
