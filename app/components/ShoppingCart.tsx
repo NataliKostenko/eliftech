@@ -36,11 +36,11 @@ export default function ShoppingCart() {
       !orderData.customer.phone ||
       cart.length === 0
     ) {
-      alert("Заповніть форму та додайте товари в кошик!");
+      alert("Fill in the form and add items to your basket!");
       return;
     }
 
-    setStatus("Відправка...");
+    setStatus("Sending...");
 
     try {
       const response = await fetch("/api/orders", {
@@ -50,14 +50,14 @@ export default function ShoppingCart() {
       });
 
       if (response.ok) {
-        setStatus("Замовлення успішно створено!");
-        alert("Дякуємо! Ваше замовлення прийнято.");
+        setStatus("Your order has been successfully placed!");
+        alert("Thank you! Your order has been received.");
       } else {
-        setStatus("Помилка при відправці.");
+        setStatus("An error occurred during sending.");
       }
     } catch (error) {
       console.error(error);
-      setStatus("Помилка з'єднання з сервером.");
+      setStatus("Error connecting to the server.");
     }
   }
   return (

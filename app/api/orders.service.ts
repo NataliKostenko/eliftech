@@ -53,7 +53,7 @@ export async function createOrder(orderData: OrderData) {
     return { success: true, orderId };
   } catch (error) {
     await client.query("ROLLBACK");
-    console.error("Помилка при збереженні замовлення:", error);
+    console.error("Error saving order:", error);
     throw error;
   } finally {
     client.release();

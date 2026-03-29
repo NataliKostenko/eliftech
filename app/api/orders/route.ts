@@ -11,7 +11,7 @@ export async function POST(req: Request) {
       !body.customer.email ||
       body.items.length === 0
     ) {
-      return NextResponse.json({ error: "Неповні дані" }, { status: 400 });
+      return NextResponse.json({ error: "Incomplete data" }, { status: 400 });
     }
 
     const result = await createOrder(body);

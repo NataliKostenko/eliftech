@@ -23,25 +23,27 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    Promise.all([
-      fetch("/api/shops").then((res) => res.json()),
-      fetch("/api/products").then((res) => res.json()),
-    ])
-      .then(([shopsData, productsData]) => {
-        setShops(shopsData);
-        setCards(productsData);
-        if (shopsData.length > 0) setSelectedShopId(shopsData[0].id);
+    fetch("/api/shops")
+      .then((res) => res.json())
+      .then((data) => {
+        setShops(data);
+        if (data.length > 0) setSelectedShopId(data[0].id);
       })
-      .catch((err) => console.error("Помилка завантаження:", err))
+      .catch((err) => console.error("Error loading:", err))
       .finally(() => setIsLoading(false));
   }, []);
 
-  const filteredCards = selectedShopId
-    ? cards.filter((card) => card.shop_id === selectedShopId)
-    : [];
+  useEffect(() => {
+    if (selectedShopId !== null) {
+      fetch(`/api/products?shopId=${selectedShopId}`)
+        .then((res) => res.json())
+        .then((data) => setCards(data))
+        .catch((err) => console.error("Error loading products:", err));
+    }
+  }, [selectedShopId]);
 
   if (isLoading) {
-    return <div className="p-10 text-center">Завантаження меню...</div>;
+    return <div className="p-10 text-center">Loading menu...</div>;
   }
 
   return (
@@ -49,10 +51,14 @@ export default function Home() {
       <div className="flex flex-row flex-2 w-full">
         <ShopsList
           shops={shops}
-          onSelectShop={setSelectedShopId}
+          onSelectShop={(id: number) => {
+            console.log(id);
+            setSelectedShopId(id);
+            return;
+          }}
           selectedShopId={selectedShopId}
         />
-        <ProductsCardsList cards={filteredCards} />
+        <ProductsCardsList cards={cards} />
       </div>
     </>
   );
