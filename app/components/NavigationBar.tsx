@@ -12,7 +12,7 @@ export default function NavigationBar() {
             Shops
           </Link>
         </li>
-        <p>|</p>
+        <li>|</li>
         <li className="ml-5 ">
           <Link
             href="/cart"
