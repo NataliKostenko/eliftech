@@ -3,10 +3,12 @@ import { useState } from "react";
 import ShoppingCartForm from "./ShoppingCartForm";
 import ShoppingCartOrder from "./ShoppingCartOrder";
 import { useCart } from "../context/CartContext";
+import { useRouter } from "next/navigation";
 
 export default function ShoppingCart() {
-  const { cart } = useCart();
+  const { cart, clearCart } = useCart();
   const [status, setStatus] = useState<string | null>(null);
+  const router = useRouter();
 
   const totalPrice = cart.reduce(
     (acc, item) => acc + item.price * item.quantity,
@@ -15,7 +17,8 @@ export default function ShoppingCart() {
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    const formData = new FormData(e.currentTarget);
+    const form = e.currentTarget;
+    const formData = new FormData(form);
     const cleanItems = cart.map((item) => ({
       product_id: item.id,
       price: Number(item.price),
@@ -50,8 +53,13 @@ export default function ShoppingCart() {
       });
 
       if (response.ok) {
+        if (clearCart) {
+          clearCart();
+        }
+        form.reset();
         setStatus("Your order has been successfully placed!");
         alert("Thank you! Your order has been received.");
+        router.push("/");
       } else {
         setStatus("An error occurred during sending.");
       }
@@ -63,7 +71,7 @@ export default function ShoppingCart() {
   return (
     <form onSubmit={handleSubmit} className="flex flex-row flex-2 w-full">
       <ShoppingCartForm />
-      <ShoppingCartOrder />
+      <ShoppingCartOrder status={status} />
     </form>
   );
 }

@@ -2,7 +2,10 @@
 import OrderCard from "./OrderCard";
 import { useCart } from "../context/CartContext";
 
-export default function ShoppingCartOrder() {
+interface ShoppingCartOrderProps {
+  status: string | null;
+}
+export default function ShoppingCartOrder({ status }: ShoppingCartOrderProps) {
   const { cart, updateQuantity } = useCart();
 
   const totalPrice = cart.reduce(
@@ -31,6 +34,7 @@ export default function ShoppingCartOrder() {
         </p>
         <button
           type="submit"
+          disabled={status === "Sending..."}
           className="p-2 bg-cyan-600 text-white rounded-md w-40"
         >
           Submit Order
