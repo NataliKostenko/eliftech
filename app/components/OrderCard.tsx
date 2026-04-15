@@ -16,7 +16,10 @@ export interface OrderCardProps {
 export default function OrderCard(props: OrderCardProps) {
   const { removeFromCart } = useCart();
   return (
-    <div className="flex flex-row p-3 m-3 border rounded-md w-full relative">
+    <div
+      className="flex flex-col lg:flex-row p-3 m-3 
+    border-[#2F4454] rounded-md w-full relative bg-[#376E6F]/20"
+    >
       <RemoveButton
         onClick={() => removeFromCart(props.id)}
         className="absolute top-2 right-2"
@@ -31,7 +34,7 @@ export default function OrderCard(props: OrderCardProps) {
           sizes="(max-width: 768px) 100vw, 250px"
         />
       </div>
-      <div className="flex flex-col w-2/5 ">
+      <div className="flex flex-col w-2/5 text-[#2F4454]">
         <p className="mt-2">{props.name}</p>
         <p className="mt-2"> price: {props.price} </p>
         <QuantityCounter

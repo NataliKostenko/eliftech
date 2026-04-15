@@ -14,7 +14,10 @@ export default function QuantityCounter({
   onDecrease,
 }: QuantityCounterProps) {
   return (
-    <div className="flex items-center border rounded-lg bg-white overflow-hidden shadow-sm h-8 w-40 mt-2">
+    <div
+      className="flex items-center border rounded-lg 
+    bg-white overflow-hidden shadow-sm h-8 w-40  mt-2"
+    >
       <span
         className="px-3 text-sm font-medium w-full text-center
       "

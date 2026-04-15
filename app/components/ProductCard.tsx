@@ -10,7 +10,7 @@ export interface ProductCardProps {
 
 export default function ProductCard(props: ProductCardProps) {
   return (
-    <div className="flex flex-col p-3 m-3 border rounded-md size-60">
+    <div className="flex flex-col p-3 m-3 border-[#2F4454] rounded-xl size-60 bg-[#DA7B93]/20">
       <div className="relative w-full h-32">
         <Image
           src={props.image}
@@ -21,8 +21,8 @@ export default function ProductCard(props: ProductCardProps) {
           sizes="(max-width: 768px) 100vw, 250px"
         />
       </div>
-      <p className="mt-2">{props.name}</p>
-      <p className="text-gray-700 font-bold mt-1">{props.price} грн</p>
+      <p className="mt-2 text-[#2F4454]">{props.name}</p>
+      <p className="text-[#2F4454] font-bold mt-1">{props.price} грн</p>
       <AddToCartButton
         name="add to Cart"
         product={{
