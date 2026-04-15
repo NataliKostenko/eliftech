@@ -29,10 +29,10 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="h-full flex flex-col">
+      <body className="h-full flex flex-col bg-red-200">
         <CartProvider>
           <NavigationBar />
-          <main className="flex flex-col flex-1 items-center justify-center font-sans dark:bg-black p-5 ">
+          <main className="flex flex-col flex-1 items-center justify-center font-sans dark:bg-black p-5">
             {children}
           </main>
         </CartProvider>

@@ -69,7 +69,10 @@ export default function ShoppingCart() {
     }
   }
   return (
-    <form onSubmit={handleSubmit} className="flex flex-row flex-2 w-full">
+    <form
+      onSubmit={handleSubmit}
+      className="flex  flex-col md:flex-row flex-2 w-full"
+    >
       <ShoppingCartForm />
       <ShoppingCartOrder status={status} />
     </form>

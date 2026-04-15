@@ -7,16 +7,16 @@ export default function NavigationBar() {
         <li className="mr-5 ">
           <Link
             href="/"
-            className="text-cyan-700  hover:underline decoration-cyan-500 active:underline decoration-cyan-700"
+            className="text-white  hover:text-[#376E6F] hover:underline decoration-[#376E6F] active:text-[#376E6F] active:underline decoration-[#376E6F]"
           >
             Shops
           </Link>
         </li>
-        <li>|</li>
+        <li className="text-white">|</li>
         <li className="ml-5 ">
           <Link
             href="/cart"
-            className="text-cyan-700  hover:underline decoration-cyan-500 active:underline decoration-cyan-700"
+            className="text-white  hover:text-[#376E6F] hover:underline decoration-[#376E6F] active:text-[#376E6F] active:underline decoration-[#376E6F]"
           >
             Shopping cart
           </Link>

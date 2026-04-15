@@ -7,8 +7,8 @@ interface ProductsCardsListProps {
 export default function ProductsCardsList(props: ProductsCardsListProps) {
   return (
     <div
-      className="w-3/4 flex flex-row flex-wrap border rounded-md p-3 ml-5 h-screen
-     overflow-y-auto"
+      className="w-full md:w-3/4 flex flex-row flex-wrap border rounded-xl p-3 md:ml-5 h-screen
+     overflow-y-auto bg-white"
     >
       {props.cards?.map((element) => (
         <ProductCard
