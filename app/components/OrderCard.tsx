@@ -36,7 +36,7 @@ export default function OrderCard(props: OrderCardProps) {
       </div>
       <div className="flex flex-col w-2/5 text-[#2F4454]">
         <p className="mt-2">{props.name}</p>
-        <p className="mt-2"> price: {props.price} </p>
+        <p className="mt-2"> price: {props.price} UAH</p>
         <QuantityCounter
           id={props.id}
           quantity={props.quantity}
