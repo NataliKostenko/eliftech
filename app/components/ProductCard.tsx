@@ -22,7 +22,7 @@ export default function ProductCard(props: ProductCardProps) {
         />
       </div>
       <p className="mt-2 text-[#2F4454]">{props.name}</p>
-      <p className="text-[#2F4454] font-bold mt-1">{props.price} грн</p>
+      <p className="text-[#2F4454] font-bold mt-1">{props.price} UAH</p>
       <AddToCartButton
         name="add to Cart"
         product={{
