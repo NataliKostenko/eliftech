@@ -1,36 +1,45 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+> The project was created for educational purposes to demonstrate how to work with Next.js.
+> 
+# Burger Shop
+A web application for e-commerce, with a dynamic product filtering system and a smart coupon application system.
+Web application where users can order food delivery. 
 
-## Getting Started
+## Technologies
 
-First, run the development server:
+- Next.js 16 (App Router)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- React 19
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- TypeScript
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Tailwind CSS 4
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- PostgreSQL
 
-## Learn More
+## Main functions
 
-To learn more about Next.js, take a look at the following resources:
+Dynamic Catalog: Display products from a PostgreSQL database, taking into account categories and ratings.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Smart Cart: Real-time cost calculation with support for changing product quantities.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Coupon system:
 
-## Deploy on Vercel
+Promotions page with the ability to copy in one click.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Coupon validation via API.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Terms of use: Automatic check of the minimum order amount to activate the discount:
+
+100 UAH discount — from 1000 UAH order.
+
+200 UAH discount — from 2000 UAH order.
+
+500 UAH discount — from 4000 UAH order.
+
+Automatic cancellation of the discount if the cart amount becomes less than the required threshold.
+
+Responsive design: Full support for mobile devices (Mobile First) using Tailwind CSS.
+
+The application is deployed at <https://shop.kostenko.link/>
+
+
