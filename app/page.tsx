@@ -32,7 +32,7 @@ export default function Home() {
   const [cards, setCards] = useState<Product[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
-  const itemsPerPage = 6;
+  const [itemsPerPage, setItemsPerPage] = useState(6);
   const [selectedShopId, setSelectedShopId] = useState<number | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [sortBy, setSortBy] = useState<string>("price-asc");
@@ -40,6 +40,39 @@ export default function Home() {
     min: number | null;
     max: number | null;
   }>({ min: null, max: null });
+
+  const handleItemsPerPageChange = (newLimit: number) => {
+    setItemsPerPage(newLimit);
+    setCurrentPage(1);
+  };
+
+  useEffect(() => {
+    const shopQuery = selectedShopId ? `&shopId=${selectedShopId}` : "";
+    const catQuery =
+      selectedCatIds.length > 0 ? `&catIds=${selectedCatIds.join(",")}` : "";
+    const ratingQuery =
+      ratingRange.min !== null
+        ? `&minRating=${ratingRange.min}&maxRating=${ratingRange.max}`
+        : "";
+
+    fetch(
+      `/api/products?page=${currentPage}&limit=${itemsPerPage}&sortBy=${sortBy}${shopQuery}${catQuery}${ratingQuery}`,
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        setCards(data.items || []);
+        const total = data.totalCount || 0;
+        setTotalPages(Math.ceil(total / itemsPerPage) || 1);
+      })
+      .catch(console.error);
+  }, [
+    selectedShopId,
+    selectedCatIds,
+    currentPage,
+    sortBy,
+    ratingRange,
+    itemsPerPage,
+  ]);
 
   useEffect(() => {
     fetch("/api/categories")
@@ -120,6 +153,25 @@ export default function Home() {
 
       <div className="flex flex-col md:flex-row w-full gap-6 items-start">
         <div className="w-full md:w-1/4 flex flex-col gap-4  top-4">
+          <div className="flex items-center justify-around gap-3 p-4 bg-white border rounded-xl shadow-sm">
+            <label
+              htmlFor="limit"
+              className="text-sm font-medium text-gray-600"
+            >
+              Show by:
+            </label>
+            <select
+              id="limit"
+              value={itemsPerPage}
+              onChange={(e) => handleItemsPerPageChange(Number(e.target.value))}
+              className="border border-gray-300 text-gray-900 text-sm rounded-lg block p-2"
+            >
+              <option value={6}>6</option>
+              <option value={12}>12</option>
+              <option value={24}>24</option>
+              <option value={48}>48</option>
+            </select>
+          </div>
           <ShopRatingFilter
             currentMin={ratingRange.min}
             onRatingChange={handleRatingChange}
