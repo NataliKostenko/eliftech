@@ -137,7 +137,7 @@ export default function Home() {
   };
 
   return (
-    <div className="flex flex-col gap-6 w-full max-w-7xl mx-auto p-4 justify-start">
+    <>
       <ProductFilters
         categories={categories}
         selectedCatIds={selectedCatIds}
@@ -195,6 +195,6 @@ export default function Home() {
         totalPages={totalPages}
         onPageChange={(page) => setCurrentPage(page)}
       />
-    </div>
+    </>
   );
 }

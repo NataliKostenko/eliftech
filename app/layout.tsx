@@ -33,7 +33,9 @@ export default function RootLayout({
         <CartProvider>
           <NavigationBar />
           <main className="flex flex-col flex-1 items-center justify-start font-sans dark:bg-black p-5">
-            {children}
+            <div className="flex flex-col gap-6 w-full max-w-7xl mx-auto p-4 justify-start">
+              {children}
+            </div>
           </main>
         </CartProvider>
       </body>
